@@ -1,0 +1,67 @@
+### Maratón API - Tests Rápidos (REST Client)
+@base = http://localhost:3000
+@json = application/json
+
+### Root
+GET {{base}}/
+
+### =====================
+### Ciudades
+### =====================
+
+### Listar ciudades
+GET {{base}}/ciudades
+
+### Crear ciudad
+POST {{base}}/ciudades
+Content-Type: {{json}}
+
+{
+  "nombre": "Buenos Aires"
+}
+
+### Actualizar ciudad (reemplazar :id por el _id de la ciudad)
+PUT {{base}}/ciudades/:id
+Content-Type: {{json}}
+
+{
+  "nombre": "CABA"
+}
+
+### Eliminar ciudad (falla si tiene atletas asociados)
+DELETE {{base}}/ciudades/:id
+
+
+### =====================
+### Atletas
+### =====================
+
+### Listar atletas (incluye nombre de ciudad)
+GET {{base}}/atletas
+
+### Crear atleta (reemplazar CIUDAD_ID por el _id de una ciudad existente)
+POST {{base}}/atletas
+Content-Type: {{json}}
+
+{
+  "dni": 12345678,
+  "nombre": "Juan Perez",
+  "tiempo": "2h 07m 30s",
+  "posicion": 1,
+  "ciudad": "CIUDAD_ID"
+}
+
+### Actualizar atleta (reemplazar :id y CIUDAD_ID)
+PUT {{base}}/atletas/:id
+Content-Type: {{json}}
+
+{
+  "dni": 12345678,
+  "nombre": "Juan P. Perez",
+  "tiempo": "2h 08m 00s",
+  "posicion": 2,
+  "ciudad": "CIUDAD_ID"
+}
+
+### Eliminar atleta
+DELETE {{base}}/atletas/:id
