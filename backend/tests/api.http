@@ -17,19 +17,19 @@ POST {{base}}/ciudades
 Content-Type: {{json}}
 
 {
-  "nombre": "Buenos Aires"
+  "nombre": "JUJUY"
 }
 
 ### Actualizar ciudad (reemplazar :id por el _id de la ciudad)
-PUT {{base}}/ciudades/:id
+PUT {{base}}/ciudades/68d731fbcfe6807ec868e396
 Content-Type: {{json}}
 
 {
-  "nombre": "CABA"
+  "nombre": "USUAHIA"
 }
 
 ### Eliminar ciudad (falla si tiene atletas asociados)
-DELETE {{base}}/ciudades/:id
+DELETE {{base}}/ciudades/68d7357dbb30b1da618cc031
 
 
 ### =====================
@@ -44,24 +44,24 @@ POST {{base}}/atletas
 Content-Type: {{json}}
 
 {
-  "dni": 12345678,
-  "nombre": "Juan Perez",
-  "tiempo": "2h 07m 30s",
-  "posicion": 1,
-  "ciudad": "CIUDAD_ID"
+  "dni": 48545232,
+  "nombre": "JUAN BOLATI",
+  "tiempo": "4h 40m 40s",
+  "posicion": 22,
+  "ciudad": "68d731fbcfe6807ec868e396"
 }
 
 ### Actualizar atleta (reemplazar :id y CIUDAD_ID)
-PUT {{base}}/atletas/:id
+PUT {{base}}/atletas/68d73588bb30b1da618cc036
 Content-Type: {{json}}
 
 {
-  "dni": 12345678,
-  "nombre": "Juan P. Perez",
+  "dni": 45213927,
+  "nombre": "Juan P. Bonilla",
   "tiempo": "2h 08m 00s",
-  "posicion": 2,
-  "ciudad": "CIUDAD_ID"
+  "posicion": 3,
+  "ciudad": "68d73574bb30b1da618cc02f"
 }
 
 ### Eliminar atleta
-DELETE {{base}}/atletas/:id
+DELETE {{base}}/atletas/68d735b4bb30b1da618cc03b
