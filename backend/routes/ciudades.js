@@ -1,5 +1,4 @@
-// routes/ciudades.js
-// Router de Express para gestionar ciudades (esqueleto, sin implementación)
+
 
 import { Router } from 'express';
 import mongoose from 'mongoose';
@@ -9,7 +8,7 @@ import { validateCiudadNombre } from '../validators/ciudadesValidator.js';
 
 const router = Router();
 
-// GET /ciudades - listar todas
+// GET /ciudades 
 router.get('/', async (req, res, next) => {
   try {
     const ciudades = await Ciudad.find().sort({ nombre: 1 });
@@ -19,7 +18,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// POST /ciudades - crear
+// POST /ciudades
 router.post('/', async (req, res, next) => {
   try {
     const { nombre } = req.body || {};
@@ -33,7 +32,7 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-// PUT /ciudades/:id - actualizar
+// PUT /ciudades/:id 
 router.put('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -56,7 +55,7 @@ router.put('/:id', async (req, res, next) => {
   }
 });
 
-// DELETE /ciudades/:id - eliminar (bloquear si hay atletas asociados)
+// DELETE /ciudades/:id 
 router.delete('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;

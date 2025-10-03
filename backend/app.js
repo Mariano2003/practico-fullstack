@@ -22,13 +22,13 @@ app.get('/', (req, res) => {
 app.use('/ciudades', ciudadesRouter);
 app.use('/atletas', atletasRouter);
 
-// Error handler
+// Error
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(err.status || 500).json({ error: err.message || 'Error interno del servidor' });
 });
 
-// Conectar a MongoDB y luego iniciar servidor
+
 mongoose
   .connect(MONGODB_URI)
   .then(() => {

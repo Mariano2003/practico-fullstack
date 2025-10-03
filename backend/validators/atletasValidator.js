@@ -8,7 +8,7 @@ export function validateAtletaFields({ dni, nombre, tiempo, posicion, ciudad }) 
   return errors;
 }
 
-// Alias para compatibilidad con rutas que importan validateAtleta
+
 export function validateAtleta(payload) {
   return validateAtletaFields(payload);
 }

@@ -16,7 +16,7 @@ function normalizeBody(body) {
   };
 }
 
-// GET /atletas - listar con nombre de ciudad
+// GET /atletas 
 router.get('/', async (req, res, next) => {
   try {
     const atletas = await Atleta.find().populate('ciudad', 'nombre').sort({ posicion: 1, nombre: 1 });
@@ -35,14 +35,14 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// POST /atletas - crear
+// POST /atletas 
 router.post('/', async (req, res, next) => {
   try {
     const { dni, nombre, tiempo, posicion, ciudad } = normalizeBody(req.body);
     const errors = validateAtleta({ dni, nombre, tiempo, posicion, ciudad });
     if (errors.length) return res.status(400).json({ errors });
 
-    // Validar formato de ObjectId para ciudad
+    // Validar formato 
     if (!mongoose.Types.ObjectId.isValid(ciudad)) {
       return res.status(400).json({ errors: ['El campo "ciudad" debe ser un ObjectId válido'] });
     }
@@ -70,7 +70,7 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-// PUT /atletas/:id - actualizar
+// PUT /atletas/:id 
 router.put('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -81,16 +81,16 @@ router.put('/:id', async (req, res, next) => {
     const errors = validateAtleta({ dni, nombre, tiempo, posicion, ciudad });
     if (errors.length) return res.status(400).json({ errors });
 
-    // Validar formato de ObjectId para ciudad
+    // Validar formato 
     if (!mongoose.Types.ObjectId.isValid(ciudad)) {
       return res.status(400).json({ errors: ['El campo "ciudad" debe ser un ObjectId válido'] });
     }
 
-    // Validar ciudad existente
+    // Validar ciudad 
     const ciudadExists = await Ciudad.exists({ _id: ciudad });
     if (!ciudadExists) return res.status(400).json({ errors: ['La ciudad no existe'] });
 
-    // Validar DNI único excluyendo el propio
+    // Validar DNI único
     const dniExists = await Atleta.exists({ dni, _id: { $ne: id } });
     if (dniExists) return res.status(409).json({ errors: ['Ya existe un atleta con ese DNI'] });
 
@@ -120,7 +120,7 @@ router.put('/:id', async (req, res, next) => {
   }
 });
 
-// DELETE /atletas/:id - eliminar
+// DELETE /atletas/:id 
 router.delete('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;

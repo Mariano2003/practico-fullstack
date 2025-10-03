@@ -29,7 +29,7 @@ Content-Type: {{json}}
 }
 
 ### Eliminar ciudad (falla si tiene atletas asociados)
-DELETE {{base}}/ciudades/68d7357dbb30b1da618cc031
+DELETE {{base}}/ciudades/68d73574bb30b1da618cc02f
 
 
 ### =====================
@@ -52,15 +52,15 @@ Content-Type: {{json}}
 }
 
 ### Actualizar atleta (reemplazar :id y CIUDAD_ID)
-PUT {{base}}/atletas/68d73588bb30b1da618cc036
+PUT {{base}}/atletas/68e03737c9fe78f0278afb23
 Content-Type: {{json}}
 
 {
-  "dni": 45213927,
-  "nombre": "Juan P. Bonilla",
+  "dni": 12345678,
+  "nombre": "Nuevo ss",
   "tiempo": "2h 08m 00s",
-  "posicion": 3,
-  "ciudad": "68d73574bb30b1da618cc02f"
+  "posicion": 35,
+  "ciudad": "68e03348c9fe78f0278afac0"
 }
 
 ### Eliminar atleta
